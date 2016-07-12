@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.zver.wather.MainActivity">
+    <item
+        android:id="@+id/action_seating"
+        android:orderInCategory="100"
+        android:title="@string/action_seating"
+        app:showAsAction="never" />
+</menu>

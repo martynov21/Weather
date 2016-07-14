@@ -1,5 +1,6 @@
 package com.example.zver.wather;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -37,15 +38,12 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
 //        if (id == R.id.action_refresh) {
 //            return true;
 //        }
 
         if (id == R.id.action_seating) {
-            Toast refresh = Toast.makeText(getApplicationContext(),
-                    "Seating", Toast.LENGTH_SHORT);
-            refresh.show();
+            startActivity(new Intent(this,SettingsActivity.class));
         }
 
         return super.onOptionsItemSelected(item);

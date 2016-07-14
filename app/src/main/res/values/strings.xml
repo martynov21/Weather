@@ -7,9 +7,6 @@
 
     <!-- Strings related to Settings -->
 
-    <!-- Example General settings -->
-    <string name="pref_header_general">General</string>
-
     <string name="pref_title_display_name">Location</string>
     <string name="pref_default_display_name">Las-Vegas</string>
 

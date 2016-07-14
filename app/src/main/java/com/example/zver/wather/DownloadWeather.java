@@ -27,18 +27,15 @@ public class DownloadWeather extends AsyncTask<String, Void, String[]> {
 
 
     private String formatHighLows(double high, double low) {
-        // For presentation, assume the user doesn't care about tenths of a degree.
         long roundedHigh = Math.round(high);
         long roundedLow = Math.round(low);
-
-        String highLowStr = "Max " + roundedHigh + " / " + "Min " + roundedLow;
+        String highLowStr =roundedHigh + "-" + roundedLow;
         return highLowStr;
     }
 
     private String[] getWeatherDataFromJson(String forecastJsonStr, int numDays)
             throws JSONException {
 
-        // These are the names of the JSON objects that need to be extracted.
         final String OWM_LIST = "list";
         final String OWM_WEATHER = "weather";
         final String OWM_TEMPERATURE = "temp";
@@ -51,8 +48,7 @@ public class DownloadWeather extends AsyncTask<String, Void, String[]> {
 
 
         String[] resultStrs = new String[numDays];
-        for(int i = 0; i < weatherArray.length(); i++) {
-            // For now, using the format "Day, description, hi/low"
+        for (int i = 0; i < weatherArray.length(); i++) {
             String day;
             String description;
             String highAndLow;
@@ -61,29 +57,23 @@ public class DownloadWeather extends AsyncTask<String, Void, String[]> {
             JSONObject dayForecast = weatherArray.getJSONObject(i);
 
 
-            GregorianCalendar calendar = new GregorianCalendar();
-            calendar.add(Calendar.DAY_OF_MONTH, i);
 
-            day = calendar.get(Calendar.DAY_OF_MONTH) + "";
+            Calendar date = new GregorianCalendar();
+            date.add(Calendar.DAY_OF_MONTH, i);
 
+            day = date.get(Calendar.DAY_OF_MONTH)+ "/" + date.get(Calendar.MONTH) +  "";
 
-            // description is in a child array called "weather", which is 1 element long.
             JSONObject weatherObject = dayForecast.getJSONArray(OWM_WEATHER).getJSONObject(0);
             description = weatherObject.getString(OWM_DESCRIPTION);
 
-            // Temperatures are in a child object called "temp".  Try not to name variables
-            // "temp" when working with temperature.  It confuses everybody.
             JSONObject temperatureObject = dayForecast.getJSONObject(OWM_TEMPERATURE);
             double high = temperatureObject.getDouble(OWM_MAX);
             double low = temperatureObject.getDouble(OWM_MIN);
 
             highAndLow = formatHighLows(high, low);
-            resultStrs[i] = day + " - " + description + " - " + highAndLow;
+            resultStrs[i] = day + "  -  " + description + "  -  " + highAndLow;
         }
 
-//        for (String s : resultStrs) {
-//            Log.v("resultStrs", "Forecast entry: " + s);
-//        }
         return resultStrs;
 
     }
@@ -95,10 +85,6 @@ public class DownloadWeather extends AsyncTask<String, Void, String[]> {
         if (params.length == 0) {
             return null;
         }
-
-        Date date = new Date();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd", Locale.getDefault());
-        //Log.v("simpledata", dateFormat.format(date));
 
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
@@ -127,7 +113,6 @@ public class DownloadWeather extends AsyncTask<String, Void, String[]> {
                     .build();
 
             //URL url = new URL("http://api.openweathermap.org/data/2.5/forecast/daily?q="+params[0]+"&mode=json&units=metric&cnt=1&appid=8f77431b8a6e4242cd75e831c7ce4b80");
-
 
 
             URL url = new URL(builtUri.toString());
@@ -173,8 +158,8 @@ public class DownloadWeather extends AsyncTask<String, Void, String[]> {
         }
 
         try {
-            return getWeatherDataFromJson(forecastJsonStr,numDays);
-        }catch (JSONException e){
+            return getWeatherDataFromJson(forecastJsonStr, numDays);
+        } catch (JSONException e) {
             Log.e("Error", e + "");
         }
 

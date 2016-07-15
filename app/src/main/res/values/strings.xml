@@ -1,23 +1,51 @@
 <resources>
     <string name="app_name">Weather</string>
     <string name="action_refresh">Refresh</string>
+    <string name="action_location">Location</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_detail_activity">Detail</string>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->
 
-    <string name="pref_title_display_name">Location</string>
-    <string name="pref_default_display_name">Las-Vegas</string>
+    <string name="pref_location_label">Location</string>
+    <string name="pref_location_key" translatable="false">location</string>
+    <string name="pref_location_default" translatable="false">London</string>
 
-    <string name="pref_title_add_friends_to_messages">Type of temperature unit</string>
-    <string-array name="pref_example_list_titles">
-        <item>Celsius</item>
-        <item>Fahrenheit</item>
+
+
+    <string name="pref_units_label">Temperature units</string>
+    <string name="pref_temperature_key" translatable="false">units</string>
+    <string name="pref_temperature_metric" translatable="false">Metric</string>
+    <string name="pref_temperature_imperial" translatable="false">Imperial</string>
+
+    <string-array name="pref_type_list_titles">
+        <item>Metric</item>
+        <item>Imperial</item>
     </string-array>
-    <string-array name="pref_example_list_values">
-        <item>0</item>
-        <item>1</item>
+    <string-array name="pref_type_list_values">
+        <item>Metric</item>
+        <item>Imperial</item>
     </string-array>
 
+
+
+    <string name="pref_col_days_label">The number of days forecast</string>
+    <string name="pref_col_days_key" translatable="false">colDays</string>
+    <string name="pref_col_days_default" translatable="false">7</string>
+
+    <string-array name="pref_col_days_list_titles">
+        <item>3 days</item>
+        <item>5 days</item>
+        <item>7 days</item>
+        <item>10 days</item>
+        <item>15 days</item>
+    </string-array>
+    <string-array name="pref_col_days_list_values">
+        <item>3</item>
+        <item>5</item>
+        <item>7</item>
+        <item>10</item>
+        <item>15</item>
+    </string-array>
 </resources>

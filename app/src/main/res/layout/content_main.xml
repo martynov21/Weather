@@ -16,7 +16,7 @@
         android:id="@+id/listFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.example.zver.wather.WeatherList"
+        android:name="com.example.zver.wather.WeatherListFragment"
         tools:layout="@layout/main_list_fragment">
 
     </fragment>
